@@ -108,4 +108,3 @@ if __name__ == '__main__':
         print(f"Selected camera {selected_cam}")
     else:
         log("No cameras are available")
-

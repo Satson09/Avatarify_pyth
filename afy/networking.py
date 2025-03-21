@@ -28,20 +28,16 @@ def check_connection(socket, timeout=1000):
 
 class SerializingSocket(zmq.Socket):
     """Numpy array serialization methods.
-
     Based on https://github.com/jeffbass/imagezmq/blob/master/imagezmq/imagezmq.py#L291
-
     Used for sending / receiving OpenCV images, which are Numpy arrays.
     Also used for sending / receiving jpg compressed OpenCV images.
     """
 
     def send_array(self, A, msg='NoName', flags=0, copy=True, track=False):
         """Sends a numpy array with metadata and text message.
-
         Sends a numpy array with the metadata necessary for reconstructing
         the array (dtype,shape). Also sends a text msg, often the array or
         image name.
-
         Arguments:
           A: numpy array or OpenCV image.
           msg: (optional) array name, image name or text message.
@@ -65,10 +61,8 @@ class SerializingSocket(zmq.Socket):
                  copy=True,
                  track=False):
         """Send a jpg buffer with a text message.
-
         Sends a jpg bytestring of an OpenCV image.
         Also sends text msg, often the image name.
-
         Arguments:
           msg: image name or text message.
           data: binary data to be sent.
@@ -83,16 +77,13 @@ class SerializingSocket(zmq.Socket):
 
     def recv_array(self, flags=0, copy=True, track=False):
         """Receives a numpy array with metadata and text message.
-
         Receives a numpy array with the metadata necessary
         for reconstructing the array (dtype,shape).
         Returns the array and a text msg, often the array or image name.
-
         Arguments:
           flags: (optional) zmq flags.
           copy: (optional) zmq copy flag.
           track: (optional) zmq track flag.
-
         Returns:
           msg: image name or text message.
           A: numpy array or OpenCV image reconstructed with dtype and shape.
@@ -105,15 +96,12 @@ class SerializingSocket(zmq.Socket):
 
     def recv_data(self, flags=0, copy=True, track=False):
         """Receives a jpg buffer and a text msg.
-
         Receives a jpg bytestring of an OpenCV image.
         Also receives a text msg, often the image name.
-
         Arguments:
           flags: (optional) zmq flags.
           copy: (optional) zmq copy flag.
           track: (optional) zmq track flag.
-
         Returns:
           msg: image name or text message.
           data: bytestring, containing data.
